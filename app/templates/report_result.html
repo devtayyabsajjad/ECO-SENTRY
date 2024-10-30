@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Report Analysis</h1>
+    <h2>AI Insights</h2>
+    <p>{{ insights }}</p>
+    <h2>Recommendations</h2>
+    <p>{{ recommendations }}</p>
+    {% if image_analysis %}
+        <h2>Image Analysis</h2>
+        <ul>
+        {% for result in image_analysis %}
+            <li>{{ result }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    <a href="{{ url_for('main.dashboard') }}">Back to Dashboard</a>
+{% endblock %}

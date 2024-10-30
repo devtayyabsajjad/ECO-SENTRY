@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Dashboard</h1>
+    <p>Welcome, {{ current_user.username }}! Your current points: {{ current_user.points }}</p>
+    <h2>Your Reports</h2>
+    <ul>
+        {% for report in reports %}
+            <li>
+                <strong>{{ report.timestamp.strftime('%Y-%m-%d %H:%M') }}</strong>: {{ report.description[:50] }}...
+                <span class="status {{ report.status }}">{{ report.status }}</span>
+                {% if report.image_filename %}
+                    <img src="{{ url_for('static', filename='uploads/' + report.image_filename) }}" alt="Report Image" style="max-width: 200px;">
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    <h2>Recent Environmental Data</h2>
+    <ul>
+        {% for data in env_data %}
+            <li>
+                <strong>{{ data.data_type }}</strong>: {{ data.value }} ({{ data.timestamp.strftime('%Y-%m-%d %H:%M') }})
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('main.report') }}">Submit a New Report</a>
+    <a href="{{ url_for('main.trends') }}">View Environmental Trends</a>
+{% endblock %}

@@ -1,0 +1,16 @@
+
+# Ignore virtual environment
+venv/
+
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore other system files
+.DS_Store
+*.swp
+*.swo
+
+# Ignore environment variable files
+.env

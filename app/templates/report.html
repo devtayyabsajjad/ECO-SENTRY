@@ -1,0 +1,26 @@
+<!-- report.html -->
+{% extends "base.html" %}
+{% block content %}
+    <h1>Submit a Report</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.description.label }}
+            {{ form.description }}
+        </div>
+        <div>
+            {{ form.latitude.label }}
+            {{ form.latitude }}
+        </div>
+        <div>
+            {{ form.longitude.label }}
+            {{ form.longitude }}
+        </div>
+        <div>
+            {{ form.timestamp.label }}
+            {{ form.timestamp }}
+        </div>
+        {{ form.submit }}
+    </form>
+{% endblock %}
+
